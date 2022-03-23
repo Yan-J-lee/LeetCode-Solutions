@@ -1,7 +1,7 @@
 # Recursive approach (Python)
 def inorderTraversal(root):
-  def inorder(bintree):  # Currying; LNR
-    inorder_vals = []
+  inorder_vals = []
+  def inorder(bintree):  # LNR
     if bintree:
       inorder(root.left)
       inorder_vals.append(root.val)
