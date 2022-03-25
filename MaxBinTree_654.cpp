@@ -3,7 +3,8 @@
 2. construct the left subtree based on the root recursively
 3. build the right subtree based on the root recursively
 */
-// C++
+
+// C++ Recursion
 class Solution {
     TreeNode *maximumBinaryTree(vector<int> nums, int low, int high) {
         // base case
@@ -31,18 +32,48 @@ class Solution {
     }
 };
 
-// Python
-# class Solution(object):
-#    def constructMaximumBinaryTree(self, nums):
-#        """
-#        :type nums: List[int]
-#        :rtype: TreeNode
-#        """
-#        if nums:
-#            max_idx, max_val = max(enumerate(nums), key=lambda x:x[1])
-#            root = TreeNode(val=max_val)
-#            root.left = self.constructMaximumBinaryTree(nums[:max_idx])
-#            root.right = self.constructMaximumBinaryTree(nums[max_idx+1:])
-#            return root
-#        else:
-#            return None
+// C++ Iterating using stack
+class Solution {
+public:
+    TreeNode* constructMaximumBinaryTree(vector<int>& nums) {
+        if (!nums.empty()) {
+            vector<TreeNode *> stack;
+            TreeNode *last = nullptr;
+            for (int num : nums) {
+                while (!stack.empty() && stack.back() -> val < num) {
+                    last = stack.back();
+                    stack.pop_back();
+                }
+                TreeNode *node = new TreeNode(num);
+                if (!stack.empty()) {
+                    stack.back() -> right = node;
+                }
+                if (last != nullptr) {
+                    node -> left = last;
+                }
+                stack.push_back(node);
+                last = nullptr;
+            }
+            return stack.front();
+        }
+        else {
+            return nullptr;
+        }
+    }
+};
+
+// Python Recursion
+// class Solution(object):
+//    def constructMaximumBinaryTree(self, nums):
+//        """
+//        :type nums: List[int]
+//        :rtype: TreeNode
+//        """
+//        if nums:
+//            max_idx, max_val = max(enumerate(nums), key=lambda x:x[1])
+//            root = TreeNode(val=max_val)
+//            root.left = self.constructMaximumBinaryTree(nums[:max_idx])
+//            root.right = self.constructMaximumBinaryTree(nums[max_idx+1:])
+//            return root
+//        else:
+//            return None
