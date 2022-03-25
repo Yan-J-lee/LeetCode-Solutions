@@ -1,5 +1,4 @@
-# LeetCode-Solutions
-Implemented by C/C++ and Python3
+# 算法笔记
 
 ### 二叉树算法题总结
 1. 二叉树的算法基本都是基于DFS和BFS，基本方法：通过栈进行迭代、使用递归
