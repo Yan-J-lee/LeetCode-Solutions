@@ -31,3 +31,17 @@ public:
                      inorder, 0, inorder.size()-1);
     }
 };
+
+// class Solution(object):
+//    def buildTree(self, preorder, inorder):
+//        """
+//        :type preorder: List[int]
+//        :type inorder: List[int]
+//        :rtype: TreeNode
+//        """
+//        if inorder:
+//            root_idx = inorder.index(preorder.pop(0))
+//            root = TreeNode(val=inorder[root_idx])
+//            root.left = self.buildTree(preorder, inorder[:root_idx])
+//            root.right = self.buildTree(preorder, inorder[root_idx+1:])
+//            return root
