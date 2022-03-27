@@ -6,10 +6,10 @@ public:
         if (!head)
             return nullptr;
 
-        ListNode new_head(-1);  // create the virtual head node
-        new_head.next = head;
+        ListNode *new_head = new ListNode(-1);  // create the virtual head node
+        new_head -> next = head;
 
-        ListNode *slow = &new_head, *fast = &new_head;
+        ListNode *slow = new_head, *fast = new_head;
 
         for (int i = 0; i < n; i++)
             fast = fast->next;
@@ -25,6 +25,6 @@ public:
     
         delete to_be_deleted;
 
-        return new_head.next;
+        return new_head -> next;
     }
 };
