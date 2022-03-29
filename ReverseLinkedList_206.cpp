@@ -19,15 +19,13 @@ public:
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
-        ListNode *pre = new ListNode(0);  // create the virtual head node; pre -> val = 0
-        ListNode *cur = head;
-        pre -> next = head;
-        while (cur && cur -> next) {
-            ListNode *temp = cur -> next;
-            cur -> next = temp -> next;
-            temp -> next = pre -> next;
-            pre -> next = temp;
+        ListNode *pre = NULL, *cur = head, *nxt = head;
+        while (cur) {
+            nxt = cur -> next;
+            cur -> next = pre;  // reverse the direction of the pointer cur
+            pre = cur;
+            cur = nxt;
         }
-        return pre -> next;
+        return pre;
     }
 };
