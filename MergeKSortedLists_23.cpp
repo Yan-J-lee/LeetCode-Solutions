@@ -30,6 +30,6 @@ class Solution {
             }
             p = p -> next;
         }
-        return head;
+        return head -> next;
     }
 };
