@@ -8,7 +8,7 @@ public:
         for (int i = 1; i < preSum.size(); ++i)
             preSum[i] = preSum[i-1] + nums[i];  // preSum[i] = nums[0] + ... + nums[i]
         
-        unordered_map<int, int> map;  // hash table (to avoid TLE)
+        unordered_map<int, int> map;  // hash table: preSum (Key) -> the count of the preSum (Value) (to avoid TLE)
         int count = 0;
         
         for (int i = 0; i < nums.size(); ++i) {
@@ -18,7 +18,7 @@ public:
             if (map.find(preSum[i]-k) != map.end())
                 count += map[preSum[i]-k];
             
-            ++map[preSum[i]];  // increment the value of the key preSum[i]
+            ++map[preSum[i]];  // increment the count of the key preSum[i]
         }
         
         // Brute Force: calculate the sum of each subarray of nums (TLE)
