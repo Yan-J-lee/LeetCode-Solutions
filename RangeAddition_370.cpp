@@ -16,7 +16,7 @@ class Difference {
     
         // increase val (may negative) to array elem in range [i, j]
         void increment (int i, int j, int val) {
-            diff[i+1] += val;
+            diff[i] += val;
             if (j+1 < diff.size())
                 diff[j+1] -= val;
         }
@@ -33,6 +33,7 @@ class Difference {
         }
 };
 
+/* given function */
 vector<int> getModifiedArray(int length, vector<vector<int>> updates) {
     vector<int> nums;
     nums.resize(length);
